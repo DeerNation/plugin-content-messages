@@ -1,11 +1,11 @@
 syntax = "proto3";
-package dn.model.payload;
+package plugins.message;
 
 /**
  * A Message is the basic activity content type: a simple message that can contain
  * anything encoded in a markdown notation.
  */
-message Message {
+message Payload {
     // UUID of this entry
     string uid = 1;
     // message content

@@ -22,7 +22,7 @@
   "provides" :
   {
     "encoding"    : "utf-8",
-    "id"          : "Message",
+    "id"          : "message",
     "defaultType" : true,
     "namespace"   : "app.plugins.message",
     "class"       : "frontend/class",

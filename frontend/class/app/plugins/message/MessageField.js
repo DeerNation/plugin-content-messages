@@ -76,23 +76,17 @@ qx.Class.define('app.plugins.message.MessageField', {
 
     // overridden
     _createContent: function () {
-      return this.getActivity() ? this.getActivity().getMessage() : new proto.dn.model.payload.Message({content: this.getChildControl('textfield').getValue()})
+      return this.getActivity() ? this.getActivity().getContent() : this._createAnyContent(new app.plugins.message.Payload({content: this.getChildControl('textfield').getValue()}))
     },
 
     // property apply
     _applyActivity: function (value, old) {
       if (old) {
-        if (this.getActivity().getContent() === 'message') {
-          this.getActivity().getMessage().removeRelatedBindings(this.getChildControl('textfield'))
-          this.getChildControl('textfield', this.getActivity().getMessage())
-        }
+        old.removeRelatedBindings(this.getChildControl('textfield'))
       }
       if (value) {
-        if (this.getActivity().getContent() !== 'message') {
-          this.getActivity().setMessage(new proto.dn.model.payload.Message())
-        }
-        this.getActivity().getMessage().bind('content', this.getChildControl('textfield'), 'value')
-        this.getChildControl('textfield').bind('value', this.getActivity().getMessage(), 'content')
+        value.bind('content.value.content', this.getChildControl('textfield'), 'value')
+        this.getChildControl('textfield').bind('value', value, 'content.value.content')
       } else {
         this.getChildControl('textfield').resetValue()
       }
