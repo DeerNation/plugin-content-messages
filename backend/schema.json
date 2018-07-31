@@ -1,6 +1,9 @@
 {
   "Message": {
     "properties": {
+      "uid": {
+        "type": "string"
+      },
       "content": {
         "type": "string"
       },
