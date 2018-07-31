@@ -5,9 +5,10 @@
  * @since 2018
  */
 const createNotification = (message) => {
+  console.log(message)
   return {
-    phrase: 'New message in %s',
-    content: message.content.content
+    phrase: 'New message in %s'
+    // content: message.content.content
   }
 }
 

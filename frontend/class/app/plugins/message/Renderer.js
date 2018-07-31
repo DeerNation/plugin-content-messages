@@ -27,6 +27,7 @@ qx.Class.define('app.plugins.message.Renderer', {
   */
   properties: {
     model: {
+      check: 'proto.dn.model.Activity',
       nullable: true,
       event: 'changeModel',
       apply: '_applyModel',
@@ -70,11 +71,14 @@ qx.Class.define('app.plugins.message.Renderer', {
     // property apply
     _applyModel: function (value, old) {
       if (old) {
-        old.getOneOfContent().removeRelatedBindings(this.getChildControl('message'))
-        old.getOneOfContent().removeRelatedBindings(this)
+        const value = old.getContent().getValue()
+        if (value) {
+          value.removeRelatedBindings(this.getChildControl('message'))
+          value.removeRelatedBindings(this)
+        }
       }
       if (value) {
-        const content = value.getContent()
+        const content = value.getContent().getValue()
         if (content) {
           content.bind('displayMessage', this.getChildControl('message'), 'value')
           content.bind('link', this, 'link')
