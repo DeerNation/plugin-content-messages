@@ -11,13 +11,6 @@
         "type": "string"
       }
     },
-    "oneOf": [
-      {
-        "required": ["content"]
-      }, {
-        "required": ["link"]
-      }
-    ],
     "additionalProperties": false
   }
 }
