@@ -8,13 +8,25 @@
       "email": "tbraeutigam@gmail.com"
     }
   ],
-  "dependencies": {},
-  "keywords": ["DeerNation", "content-plugin", "messages"],
+  "dependencies": {
+    "showdown": "^1.8.6",
+    "striptags": "^3.1.1"
+  },
+  "keywords": [
+    "DeerNation",
+    "content-plugin",
+    "messages"
+  ],
   "readmeFilename": "README.md",
   "scripts": {
-    "protoc": "protoc --proto_path=. --qx_out=frontend backend/payload.proto"
+    "protoc": "protoc --proto_path=. --qx_out=frontend backend/payload.proto",
+    "test": "ENV=dev nyc --reporter=html --reporter=text-summary mocha --recursive",
+    "debug-test": "ENV=dev mocha --recursive"
   },
   "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^5.2.0",
+    "nyc": "^13.1.0",
     "protoc-gen-qx": "git+https://github.com/peuter/protoc-gen-qx.git"
   },
   "standard": {
