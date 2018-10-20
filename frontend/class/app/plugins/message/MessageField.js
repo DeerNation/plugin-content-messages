@@ -76,7 +76,7 @@ qx.Class.define('app.plugins.message.MessageField', {
 
     // overridden
     _createContent: function () {
-      return this.getActivity() ? this.getActivity().getContent() : this._createAnyContent(new app.plugins.message.Payload({content: this.getChildControl('textfield').getValue()}))
+      return this.getActivity() ? this.getActivity().getPayload() : this._createAnyContent(new app.plugins.message.Payload({content: this.getChildControl('textfield').getValue()}))
     },
 
     // property apply
@@ -85,8 +85,8 @@ qx.Class.define('app.plugins.message.MessageField', {
         old.removeRelatedBindings(this.getChildControl('textfield'))
       }
       if (value) {
-        value.bind('content.value.content', this.getChildControl('textfield'), 'value')
-        this.getChildControl('textfield').bind('value', value, 'content.value.content')
+        value.bind('payload.value.content', this.getChildControl('textfield'), 'value')
+        this.getChildControl('textfield').bind('value', value, 'payload.value.content')
       } else {
         this.getChildControl('textfield').resetValue()
       }

@@ -1,9 +1,12 @@
 syntax = "proto3";
+
+// package part after prefix "plugins." must be eual to the "id" defined in the plugins Manifest.json
 package plugins.message;
 
 /**
  * A Message is the basic activity content type: a simple message that can contain
  * anything encoded in a markdown notation.
+ * The message name must be Payload for all content plugins.
  */
 message Payload {
     // UUID of this entry

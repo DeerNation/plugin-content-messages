@@ -71,14 +71,14 @@ qx.Class.define('app.plugins.message.Renderer', {
     // property apply
     _applyModel: function (value, old) {
       if (old) {
-        const value = old.getContent().getValue()
+        const value = old.getPayload().getValue()
         if (value) {
           value.removeRelatedBindings(this.getChildControl('message'))
           value.removeRelatedBindings(this)
         }
       }
       if (value) {
-        const content = value.getContent().getValue()
+        const content = value.getPayload().getValue()
         if (content) {
           content.bind('displayMessage', this.getChildControl('message'), 'value')
           content.bind('link', this, 'link')
